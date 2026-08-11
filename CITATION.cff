@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "afripharmagen-catalog"
+message: "If you use this data, please cite it as below."
+type: dataset
+authors:
+  - family-names: Sulaiman
+    given-names: Muhammad Abiodun
+    orcid: https://orcid.org/0000-0001-9161-2608
+    affiliation: Department of Statistics, University of Ilorin, Nigeria
+  - family-names: Oyeyemi
+    given-names: Bolaji Fatai
+    orcid: https://orcid.org/0000-0001-5564-6165
+    affiliation: Department of Zoology, University of Ilorin, Nigeria
+repository-code: "https://github.com/Behordeun/afripharmagen-catalog"
+license: MIT
+version: "0.1.0"
+date-released: "2026-08-11"

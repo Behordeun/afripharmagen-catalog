@@ -1,0 +1,29 @@
+{
+  "title": "afripharmagen-catalog: Curated Pharmacogenomic Data for Sub-Saharan African Populations",
+  "description": "Machine-readable pharmacogenomic allele catalog and reproducible analyses for sub-Saharan African populations. Includes allele definitions, population frequencies, and concordance benchmarks against PharmCAT.",
+  "creators": [
+    {
+      "name": "Sulaiman, Muhammad Abiodun",
+      "affiliation": "Department of Statistics, University of Ilorin, Nigeria",
+      "orcid": "https://orcid.org/0000-0001-9161-2608"
+    },
+    {
+      "name": "Oyeyemi, Bolaji Fatai",
+      "affiliation": "Department of Zoology, University of Ilorin, Nigeria",
+      "orcid": "https://orcid.org/0000-0001-5564-6165"
+    }
+  ],
+  "keywords": [
+    "pharmacogenomics",
+    "Africa",
+    "CYP2D6",
+    "CYP2B6",
+    "CYP3A5",
+    "NAT2",
+    "allele catalog",
+    "precision medicine"
+  ],
+  "license": "MIT",
+  "upload_type": "dataset",
+  "access_right": "open"
+}

@@ -1,0 +1,247 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "curation_date": "2026-08-08",
+    "source_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/12815591/",
+      "https://pubmed.ncbi.nlm.nih.gov/17301689/",
+      "https://pubmed.ncbi.nlm.nih.gov/36294714/",
+      "https://pubmed.ncbi.nlm.nih.gov/37929326/"
+    ],
+    "curator": "afripharmagen team",
+    "notes": "Starter set of well-documented African-specific pharmacogenomic alleles. Alleles with in_pharmvar=true are present in PharmVar but have African population context. Alleles with in_pharmvar=false are novel or pending submission."
+  },
+  "entries": [
+    {
+      "gene": "CYP2D6",
+      "allele_name": "*17",
+      "defining_variants": [
+        {
+          "rsid": "rs28371706",
+          "position": 42129770,
+          "ref": "C",
+          "alt": "T"
+        },
+        {
+          "rsid": "rs16947",
+          "position": 42127941,
+          "ref": "G",
+          "alt": "A"
+        }
+      ],
+      "function": "decreased_function",
+      "activity_score": 0.5,
+      "evidence_level": "L1",
+      "populations": [
+        "YRI",
+        "LWK",
+        "GWD",
+        "MSL",
+        "ESN",
+        "ACB"
+      ],
+      "frequency_range": "0.15-0.35",
+      "source_pmids": [
+        "12815591",
+        "9918137"
+      ],
+      "in_pharmvar": true,
+      "notes": "Reduced in vitro activity for codeine, tamoxifen, debrisoquine. Most common decreased-function allele across sub-Saharan Africa."
+    },
+    {
+      "gene": "CYP2D6",
+      "allele_name": "*29",
+      "defining_variants": [
+        {
+          "rsid": "rs16947",
+          "position": 42127941,
+          "ref": "G",
+          "alt": "A"
+        },
+        {
+          "rsid": "rs61736512",
+          "position": 42129132,
+          "ref": "C",
+          "alt": "T"
+        }
+      ],
+      "function": "decreased_function",
+      "activity_score": 0.5,
+      "evidence_level": "L1",
+      "populations": [
+        "YRI",
+        "GWD",
+        "MSL",
+        "ESN"
+      ],
+      "frequency_range": "0.05-0.20",
+      "source_pmids": [
+        "12815591",
+        "17301689"
+      ],
+      "in_pharmvar": true,
+      "notes": "Reduced catalytic activity demonstrated in vitro (Oscarson et al.). Common in West Africa. Variants in SRS-2 and SRS-5."
+    },
+    {
+      "gene": "CYP2B6",
+      "allele_name": "*18",
+      "defining_variants": [
+        {
+          "rsid": "rs28399499",
+          "position": 41012316,
+          "ref": "T",
+          "alt": "C"
+        }
+      ],
+      "function": "no_function",
+      "activity_score": 0.0,
+      "evidence_level": "L1",
+      "populations": [
+        "YRI",
+        "LWK",
+        "GWD",
+        "MSL",
+        "ESN"
+      ],
+      "frequency_range": "0.02-0.08",
+      "source_pmids": [
+        "17301689",
+        "23778320"
+      ],
+      "in_pharmvar": true,
+      "notes": "Loss of function confirmed by in vitro expression studies. Extremely rare outside Africa. Critical for efavirenz dosing."
+    },
+    {
+      "gene": "CYP2C19",
+      "allele_name": "*9",
+      "defining_variants": [
+        {
+          "rsid": "rs17884712",
+          "position": 94775489,
+          "ref": "G",
+          "alt": "A"
+        }
+      ],
+      "function": "decreased_function",
+      "activity_score": 0.5,
+      "evidence_level": "L2",
+      "populations": [
+        "YRI",
+        "LWK"
+      ],
+      "frequency_range": "0.01-0.03",
+      "source_pmids": [
+        "37929326"
+      ],
+      "in_pharmvar": true,
+      "notes": "Reported at low frequency in African populations. Functional impact predicted computationally; no in vitro assay published."
+    },
+    {
+      "gene": "NAT2",
+      "allele_name": "*14",
+      "defining_variants": [
+        {
+          "rsid": "rs1801279",
+          "position": 18400194,
+          "ref": "G",
+          "alt": "A"
+        }
+      ],
+      "function": "decreased_function",
+      "activity_score": 0.5,
+      "evidence_level": "L1",
+      "populations": [
+        "YRI",
+        "GWD",
+        "MSL",
+        "ESN",
+        "LWK"
+      ],
+      "frequency_range": "0.05-0.15",
+      "source_pmids": [
+        "10487035",
+        "24727484"
+      ],
+      "in_pharmvar": true,
+      "notes": "Slow acetylator allele. Higher frequency in West African populations than global average. Relevant for isoniazid hepatotoxicity risk."
+    },
+    {
+      "gene": "CYP2D6",
+      "allele_name": "*45",
+      "defining_variants": [
+        {
+          "rsid": "rs72549352",
+          "position": 42128212,
+          "ref": "G",
+          "alt": "A"
+        }
+      ],
+      "function": "normal_function",
+      "activity_score": 1.0,
+      "evidence_level": "L2",
+      "populations": [
+        "YRI",
+        "ESN"
+      ],
+      "frequency_range": "0.01-0.04",
+      "source_pmids": [
+        "36294714"
+      ],
+      "in_pharmvar": true,
+      "notes": "Identified in sub-Saharan African populations. Predicted normal function based on variant location outside active site. PharmCAT may not call this allele."
+    },
+    {
+      "gene": "CYP3A5",
+      "allele_name": "*1",
+      "defining_variants": [],
+      "function": "normal_function",
+      "activity_score": 1.0,
+      "evidence_level": "L1",
+      "populations": [
+        "YRI",
+        "LWK",
+        "GWD",
+        "MSL",
+        "ESN",
+        "ACB"
+      ],
+      "frequency_range": "0.60-0.95",
+      "source_pmids": [
+        "12815591"
+      ],
+      "in_pharmvar": true,
+      "notes": "CYP3A5*1 (expresser) is the majority allele in African populations (60-95%). Europeans are predominantly *3/*3 (non-expressers). Critical for tacrolimus dosing in African transplant recipients."
+    },
+    {
+      "gene": "CYP2B6",
+      "allele_name": "*6",
+      "defining_variants": [
+        {
+          "rsid": "rs3745274",
+          "position": 41006936,
+          "ref": "G",
+          "alt": "T"
+        }
+      ],
+      "function": "decreased_function",
+      "activity_score": 0.5,
+      "evidence_level": "L1",
+      "populations": [
+        "YRI",
+        "LWK",
+        "GWD",
+        "MSL",
+        "ESN",
+        "ACB",
+        "ASW"
+      ],
+      "frequency_range": "0.30-0.50",
+      "source_pmids": [
+        "15668386",
+        "23778320"
+      ],
+      "in_pharmvar": true,
+      "notes": "Most common decreased-function CYP2B6 allele globally, but significantly higher frequency in African populations (30-50% vs 15-25% European). Homozygotes at high risk for efavirenz toxicity."
+    }
+  ]
+}
