@@ -35,10 +35,6 @@ PharmCAT v3.4.0 cannot produce any CYP2D6 diplotype call from standard 1000 Geno
 - Whole-genome sequence data from the 1000 Genomes Project high-coverage dataset (Byrska-Bishop et al., Cell, 2022)
 - PharmCAT v3.4.0 (https://github.com/PharmGKB/PharmCAT/releases/tag/v3.4.0)
 
-## Citation
-
-> Sulaiman MA, Oyeyemi BF. A Curated Pharmacogenomic Allele Catalog for Sub-Saharan African Populations. The Pharmacogenomics Journal. 2026. [In revision]
-
 ## License
 
 MIT License. See `LICENSE`.
