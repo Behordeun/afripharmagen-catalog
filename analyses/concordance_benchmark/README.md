@@ -1,30 +1,38 @@
 # Concordance Benchmark
 
-Evaluation of star-allele calling concordance between the afripharmagen pipeline and PharmCAT v2.13.0 across 661 African genomes from the 1000 Genomes Project.
+Comparison of afripharmagen star-allele calls against PharmCAT v3.4.0 on 661 African samples from the 1000 Genomes Project.
 
 ## Method
 
-1. Ground truth diplotypes assigned via direct variant inspection at catalog-defined positions using phased haplotype data from 1000 Genomes Project statistical phasing.
-2. afripharmagen StarCaller run on each sample's VCF for all catalog genes.
-3. Per-allele concordance computed as fraction of carriers correctly identified.
+1. PharmCAT v3.4.0 run on all 3,202 1000 Genomes samples using the official VCF preprocessor and default configuration.
+2. afripharmagen StarCaller run on the same VCFs for all 661 African samples across 10 genes.
+3. Per-allele carrier detection compared between tools for all 9 catalog alleles.
 
-## Populations
+## Key Finding
 
-| Code | Description | N |
-|------|-------------|---|
-| YRI | Yoruba in Ibadan, Nigeria | 108 |
-| LWK | Luhya in Webuye, Kenya | 99 |
-| GWD | Gambian in Western Divisions | 113 |
-| MSL | Mende in Sierra Leone | 85 |
-| ESN | Esan in Nigeria | 99 |
-| ACB | African Caribbeans in Barbados | 96 |
-| ASW | Americans of African Ancestry in SW USA | 61 |
+PharmCAT v3.4.0 cannot produce any CYP2D6 diplotype call from standard 1000 Genomes WGS VCFs (returns "Unknown/Unknown" for all 661 African samples). afripharmagen detects 243 CYP2D6*17 carriers and 134 CYP2D6*29 carriers from the same input using a reduced-position matching strategy.
 
-## Results
-
-Results will be deposited in `results/` upon benchmark completion.
+For other genes (CYP2B6, CYP2C9, CYP2C19, NAT2), PharmCAT and afripharmagen show 88-100% concordance.
 
 ## Scripts
 
-- `scripts/run_benchmark.py` - Full benchmark execution
-- `scripts/compute_concordance.py` - Per-allele concordance statistics
+- `scripts/compare_pharmcat.py` - Parses PharmCAT JSON reports and afripharmagen JSONL, produces Table 2
+
+## Results
+
+- `results/pharmcat_comparison.json` - Machine-readable comparison
+- `results/pharmcat_comparison.tsv` - TSV for manuscript table
+
+## Reproducing
+
+```bash
+python scripts/compare_pharmcat.py \
+    --pharmcat-dir /path/to/pharmcat_results/reports/ \
+    --afripharmagen ../../results/afripharmagen_benchmark.jsonl \
+    --output-dir results/
+```
+
+## PharmCAT Version
+
+- PharmCAT v3.4.0 (downloaded from https://github.com/PharmGKB/PharmCAT/releases/tag/v3.4.0)
+- Run date: August 2026

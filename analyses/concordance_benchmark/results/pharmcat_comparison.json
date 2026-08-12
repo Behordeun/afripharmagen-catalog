@@ -1,0 +1,77 @@
+{
+  "n_samples": 661,
+  "comparisons": [
+    {
+      "gene": "CYP2D6",
+      "allele": "*17",
+      "afripharmagen_carriers": 243,
+      "pharmcat_carriers": 0,
+      "pharmcat_no_calls": 661,
+      "agreement": "PharmCAT: NO CALL"
+    },
+    {
+      "gene": "CYP2D6",
+      "allele": "*29",
+      "afripharmagen_carriers": 134,
+      "pharmcat_carriers": 0,
+      "pharmcat_no_calls": 661,
+      "agreement": "PharmCAT: NO CALL"
+    },
+    {
+      "gene": "CYP2D6",
+      "allele": "*45",
+      "afripharmagen_carriers": 0,
+      "pharmcat_carriers": 0,
+      "pharmcat_no_calls": 661,
+      "agreement": "N/A (none detected)"
+    },
+    {
+      "gene": "CYP2B6",
+      "allele": "*18",
+      "afripharmagen_carriers": 101,
+      "pharmcat_carriers": 100,
+      "pharmcat_no_calls": 30,
+      "agreement": "99.0%"
+    },
+    {
+      "gene": "CYP2B6",
+      "allele": "*6",
+      "afripharmagen_carriers": 402,
+      "pharmcat_carriers": 383,
+      "pharmcat_no_calls": 30,
+      "agreement": "95.3%"
+    },
+    {
+      "gene": "CYP2C19",
+      "allele": "*9",
+      "afripharmagen_carriers": 13,
+      "pharmcat_carriers": 13,
+      "pharmcat_no_calls": 2,
+      "agreement": "100.0%"
+    },
+    {
+      "gene": "NAT2",
+      "allele": "*14",
+      "afripharmagen_carriers": 129,
+      "pharmcat_carriers": 128,
+      "pharmcat_no_calls": 1,
+      "agreement": "99.2%"
+    },
+    {
+      "gene": "CYP3A5",
+      "allele": "*1",
+      "afripharmagen_carriers": 584,
+      "pharmcat_carriers": 519,
+      "pharmcat_no_calls": 0,
+      "agreement": "88.9%"
+    },
+    {
+      "gene": "CYP2C9",
+      "allele": "*8",
+      "afripharmagen_carriers": 70,
+      "pharmcat_carriers": 72,
+      "pharmcat_no_calls": 1,
+      "agreement": "97.2%"
+    }
+  ]
+}

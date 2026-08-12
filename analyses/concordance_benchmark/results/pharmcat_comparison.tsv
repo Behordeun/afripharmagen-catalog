@@ -1,0 +1,10 @@
+Gene	Allele	afripharmagen_carriers	PharmCAT_carriers	PharmCAT_no_calls	Agreement
+CYP2D6	*17	243	0	661	PharmCAT: NO CALL
+CYP2D6	*29	134	0	661	PharmCAT: NO CALL
+CYP2D6	*45	0	0	661	N/A (none detected)
+CYP2B6	*18	101	100	30	99.0%
+CYP2B6	*6	402	383	30	95.3%
+CYP2C19	*9	13	13	2	100.0%
+NAT2	*14	129	128	1	99.2%
+CYP3A5	*1	584	519	0	88.9%
+CYP2C9	*8	70	72	1	97.2%

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "0.1.0",
-    "curation_date": "2026-08-08",
+    "version": "0.2.0",
+    "curation_date": "2026-08-11",
     "source_urls": [
       "https://pubmed.ncbi.nlm.nih.gov/12815591/",
       "https://pubmed.ncbi.nlm.nih.gov/17301689/",
@@ -19,8 +19,8 @@
         {
           "rsid": "rs28371706",
           "position": 42129770,
-          "ref": "C",
-          "alt": "T"
+          "ref": "G",
+          "alt": "A"
         },
         {
           "rsid": "rs16947",
@@ -46,7 +46,8 @@
         "9918137"
       ],
       "in_pharmvar": true,
-      "notes": "Reduced in vitro activity for codeine, tamoxifen, debrisoquine. Most common decreased-function allele across sub-Saharan Africa."
+      "notes": "Reduced in vitro activity for debrisoquine, dextromethorphan. Near-normal codeine O-demethylation (Wennerholm et al. 2002, PMID 11823760). Activity score of 0.5 applies to dextromethorphan-type substrates but may overestimate impairment for codeine. Most common decreased-function allele across sub-Saharan Africa.",
+      "substrate_specificity": "Activity score 0.5 validated for: debrisoquine, dextromethorphan, tamoxifen, tramadol. Near-normal activity for: codeine. Insufficient data for: metoprolol. Clinical tools should flag substrate-dependent dosing when *17 is detected."
     },
     {
       "gene": "CYP2D6",
@@ -242,6 +243,38 @@
       ],
       "in_pharmvar": true,
       "notes": "Most common decreased-function CYP2B6 allele globally, but significantly higher frequency in African populations (30-50% vs 15-25% European). Homozygotes at high risk for efavirenz toxicity."
+    },
+    {
+      "gene": "CYP2C9",
+      "allele_name": "*8",
+      "defining_variants": [
+        {
+          "rsid": "rs7900194",
+          "position": 94942309,
+          "ref": "G",
+          "alt": "A"
+        }
+      ],
+      "function": "decreased_function",
+      "activity_score": 0.5,
+      "evidence_level": "L1",
+      "populations": [
+        "YRI",
+        "LWK",
+        "GWD",
+        "MSL",
+        "ESN",
+        "ACB",
+        "ASW"
+      ],
+      "frequency_range": "0.04-0.09",
+      "source_pmids": [
+        "19663669",
+        "22378156",
+        "36855170"
+      ],
+      "in_pharmvar": true,
+      "notes": "R150H substitution causes 30% reduction in S-warfarin clearance (Liu et al. 2012, PMID 22378156). Most common decreased-function CYP2C9 allele in African and African-diaspora populations (~9% in African Americans). Absent or extremely rare in Europeans and East Asians. Clinically relevant for warfarin, phenytoin, and NSAID dosing under CPIC guidelines."
     }
   ]
 }
