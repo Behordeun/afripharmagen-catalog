@@ -35,6 +35,10 @@ PharmCAT v3.4.0 cannot produce any CYP2D6 diplotype call from standard 1000 Geno
 - Whole-genome sequence data from the 1000 Genomes Project high-coverage dataset (Byrska-Bishop et al., Cell, 2022)
 - PharmCAT v3.4.0 (https://github.com/PharmGKB/PharmCAT/releases/tag/v3.4.0)
 
+## Citation
+
+See [`CITATION.cff`](CITATION.cff) for citation information.
+
 ## License
 
 MIT License. See `LICENSE`.
