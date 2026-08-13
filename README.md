@@ -27,7 +27,7 @@ Reproducible analysis modules:
 
 ## Key Finding
 
-PharmCAT v3.4.0 cannot produce any CYP2D6 diplotype call from standard 1000 Genomes WGS data (0/661 African samples callable). afripharmagen detects 243 CYP2D6\*17 carriers and 134 CYP2D6\*29 carriers from the same input. For other genes (CYP2B6, CYP2C9, CYP2C19, NAT2), both tools show 88-100% concordance.
+PharmCAT v3.4.0 cannot call CYP2D6 from standard variant-only VCF output (0/661 African samples callable), a known VCF format limitation documented by the PharmCAT team. afripharmagen's reduced-position strategy identifies 243 CYP2D6\*17 and 134 CYP2D6\*29 carriers from the same input without reprocessing. For other genes, both tools agree (95-100%). For CYP3A5, PharmCAT correctly handles \*7 non-expressers that the current afripharmagen catalog misses.
 
 ## Data Sources
 
