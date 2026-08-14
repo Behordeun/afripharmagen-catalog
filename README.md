@@ -8,7 +8,7 @@ Curated pharmacogenomic data and reproducible analyses for sub-Saharan African p
 
 Core datasets:
 
-- `alleles/african_alleles.json` - Machine-readable catalog of 9 clinically actionable pharmacogenomic alleles across 6 genes, with African-specific frequency ranges, functional annotations, and evidence levels.
+- `alleles/african_alleles.json` - Machine-readable catalog of 10 clinically actionable pharmacogenomic alleles across 6 genes, with African-specific frequency ranges, functional annotations, and evidence levels.
 - `samples/1000g_african_samples.tsv` - Population metadata for 661 samples from seven 1000 Genomes Project African populations (YRI, LWK, GWD, MSL, ESN, ACB, ASW).
 
 ### results/
@@ -22,12 +22,14 @@ Benchmark outputs:
 Reproducible analysis modules:
 
 - `concordance_benchmark/` - Comparison of afripharmagen vs. PharmCAT v3.4.0 carrier detection
-- `population_frequencies/` - Per-population allele frequency estimation and gradient analysis
+- `population_frequencies/` - Per-population allele frequency estimation, gradient analysis, and Wilson score confidence intervals
 - `allele_catalog/` - Catalog schema documentation
 
-## Key Finding
+## Key Findings
 
-PharmCAT v3.4.0 cannot call CYP2D6 from standard variant-only VCF output (0/661 African samples callable), a known VCF format limitation documented by the PharmCAT team. afripharmagen's reduced-position strategy identifies 243 CYP2D6\*17 and 134 CYP2D6\*29 carriers from the same input without reprocessing. For other genes, both tools agree (95-100%). For CYP3A5, PharmCAT correctly handles \*7 non-expressers that the current afripharmagen catalog misses.
+PharmCAT v3.4.0 cannot call CYP2D6 from standard variant-only VCF output (0/661 African samples callable), a known VCF format limitation documented by the PharmCAT team. afripharmagen's reduced-position strategy identifies 243 CYP2D6\*17 and 134 CYP2D6\*29 carriers from the same input without reprocessing. For other genes, both tools agree (95-100%).
+
+Three alleles show inter-population frequency gradients exceeding 10 percentage points across the seven African populations: CYP3A5\*1 (19.3pp), CYP2D6\*17 (13.5pp), and CYP2D6\*29 (13.1pp). Per-population frequency data with 95% Wilson confidence intervals are available in `analyses/population_frequencies/results/`.
 
 ## Data Sources
 

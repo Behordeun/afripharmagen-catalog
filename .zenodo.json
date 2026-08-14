@@ -1,6 +1,7 @@
 {
   "title": "afripharmagen-catalog: Curated Pharmacogenomic Data for Sub-Saharan African Populations",
-  "description": "Machine-readable pharmacogenomic allele catalog and reproducible analyses for sub-Saharan African populations. Includes allele definitions, population frequencies, and concordance benchmarks against PharmCAT.",
+  "version": "0.2.1",
+  "description": "Machine-readable pharmacogenomic allele catalog and reproducible analyses for sub-Saharan African populations. Includes allele definitions, population frequencies with Wilson score confidence intervals, and concordance benchmarks against PharmCAT.",
   "creators": [
     {
       "name": "Sulaiman, Muhammad Abiodun",
@@ -19,9 +20,12 @@
     "CYP2D6",
     "CYP2B6",
     "CYP3A5",
+    "CYP2C9",
+    "CYP2C19",
     "NAT2",
     "allele catalog",
-    "precision medicine"
+    "precision medicine",
+    "population frequencies"
   ],
   "license": "MIT",
   "upload_type": "dataset",
