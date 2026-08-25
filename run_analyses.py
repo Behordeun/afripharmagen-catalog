@@ -95,23 +95,31 @@ def main() -> int:
         print(f"\n  SKIP: {VALIDATE_SCRIPT.name} not found")
 
     # Step 2: Population frequency estimation
-    ok = run_step(
-        "Population Frequency Estimation",
-        [
-            python, str(FREQ_SCRIPT),
-            "--benchmark", str(BENCHMARK),
-            "--catalog", str(CATALOG),
-            "--samples", str(SAMPLES),
-            "--output-dir", str(FREQ_OUTPUT),
-        ],
-    )
-    if not ok:
+    if not FREQ_SCRIPT.exists():
+        print(f"\n  ERROR: {FREQ_SCRIPT} not found", file=sys.stderr)
         failed.append("frequency estimation")
+    else:
+        ok = run_step(
+            "Population Frequency Estimation",
+            [
+                python, str(FREQ_SCRIPT),
+                "--benchmark", str(BENCHMARK),
+                "--catalog", str(CATALOG),
+                "--samples", str(SAMPLES),
+                "--output-dir", str(FREQ_OUTPUT),
+            ],
+        )
+        if not ok:
+            failed.append("frequency estimation")
 
     # Step 3: Hardy-Weinberg equilibrium test
-    ok = run_step("Hardy-Weinberg Equilibrium Test", [python, str(HWE_SCRIPT)])
-    if not ok:
+    if not HWE_SCRIPT.exists():
+        print(f"\n  ERROR: {HWE_SCRIPT} not found", file=sys.stderr)
         failed.append("HWE test")
+    else:
+        ok = run_step("Hardy-Weinberg Equilibrium Test", [python, str(HWE_SCRIPT)])
+        if not ok:
+            failed.append("HWE test")
 
     # Step 4: Frequency gradient plots
     if not args.skip_plots and PLOT_SCRIPT.exists():

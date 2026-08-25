@@ -176,6 +176,13 @@ def main() -> int:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     data = load_frequency_data(args.frequencies)
 
+    if not isinstance(data, dict) or "alleles" not in data:
+        print("ERROR: JSON must contain a top-level 'alleles' array", file=sys.stderr)
+        return 1
+    if not isinstance(data["alleles"], list) or not data["alleles"]:
+        print("ERROR: 'alleles' is empty or not an array", file=sys.stderr)
+        return 1
+
     plt.rcParams["font.family"] = "sans-serif"
     plt.rcParams["font.sans-serif"] = ["Arial", "Helvetica", "DejaVu Sans"]
 

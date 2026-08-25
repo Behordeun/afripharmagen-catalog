@@ -85,12 +85,12 @@ def validate_entry(idx: int, entry: dict, errors: list[str], warnings: list[str]
                 f"{prefix}: activity_score {score} is non-standard "
                 f"(expected one of {sorted(VALID_ACTIVITY_SCORES)})"
             )
-
-    # Activity score consistency with function
-    if func == "no_function" and score != 0.0:
-        errors.append(f"{prefix}: no_function allele should have activity_score 0.0, got {score}")
-    if func == "normal_function" and score != 1.0:
-        errors.append(f"{prefix}: normal_function allele should have activity_score 1.0, got {score}")
+        else:
+            # Activity score consistency with function (only check valid numeric scores)
+            if func == "no_function" and score != 0.0:
+                errors.append(f"{prefix}: no_function allele should have activity_score 0.0, got {score}")
+            if func == "normal_function" and score != 1.0:
+                errors.append(f"{prefix}: normal_function allele should have activity_score 1.0, got {score}")
 
     # Evidence level
     level = entry.get("evidence_level", "")
