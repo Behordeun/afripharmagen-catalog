@@ -12,4 +12,5 @@ Per-population allele frequency estimation for catalog alleles across seven Afri
 ## Scripts
 
 - `scripts/estimate_frequencies.py` - Per-population allele frequency computation
-- `scripts/plot_gradients.py` - Visualization of frequency gradients across populations
+- `scripts/hwe_test.py` - Hardy-Weinberg Equilibrium chi-squared test with Bonferroni correction
+- `scripts/plot_gradients.py` - Visualization of frequency gradients across populations (heatmap, gradient bars, CI detail)
