@@ -37,6 +37,52 @@ Three alleles show inter-population frequency gradients exceeding 10 percentage 
 - Whole-genome sequence data from the 1000 Genomes Project high-coverage dataset (Byrska-Bishop et al., Cell, 2022)
 - PharmCAT v3.4.0 (https://github.com/PharmGKB/PharmCAT/releases/tag/v3.4.0)
 
+## Quickstart
+
+Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/).
+
+```bash
+git clone https://github.com/Behordeun/afripharmagen-catalog.git
+cd afripharmagen-catalog
+
+# Create environment and install dependencies
+uv sync
+
+# Run the full analysis pipeline
+uv run python run_analyses.py
+```
+
+That's it. `uv sync` reads `pyproject.toml` and installs `numpy`, `scipy`, and `matplotlib` into a local `.venv`.
+
+## Running All Analyses
+
+The top-level pipeline script orchestrates the full workflow:
+
+```bash
+# Run everything except the PharmCAT concordance (requires external reports)
+uv run python run_analyses.py
+
+# Include concordance benchmark if you have PharmCAT reports
+uv run python run_analyses.py --pharmcat-dir /path/to/pharmcat_results/reports/
+
+# Skip figure generation (headless CI environments)
+uv run python run_analyses.py --skip-plots
+```
+
+The pipeline runs in order: catalog validation, frequency estimation, HWE testing, gradient plots, and (optionally) PharmCAT concordance.
+
+## Dependencies
+
+All dependencies are declared in `pyproject.toml` and pinned to compatible ranges:
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| numpy | >=1.24, <3.0 | Array operations, frequency calculations |
+| scipy | >=1.11, <2.0 | Chi-squared HWE tests |
+| matplotlib | >=3.8, <4.0 | Frequency gradient figures |
+
+No additional packages are needed to reproduce all analyses.
+
 ## Citation
 
 See [`CITATION.cff`](CITATION.cff) for citation information.

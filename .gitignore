@@ -4,3 +4,8 @@ __pycache__/
 *.egg-info/
 .env
 .venv/
+
+# Generated figures (reproducible via run_analyses.py)
+analyses/**/results/*.png
+analyses/**/results/*.pdf
+analyses/**/results/*.svg
