@@ -68,14 +68,34 @@ def _update_allele_stats(
             stats[gene][allele]["carriers"] += 1
 
 
+def _extract_sample_id(filename: str) -> str | None:
+    """Extract sample ID from a PharmCAT report filename.
+
+    Supports two common naming patterns:
+      - PharmCAT default: <prefix>.<prefix>.<sample_id>.report.json
+        e.g. "pharmcat.report.NA18486.report.json"
+      - Direct sample naming: <sample_id>.report.json
+        e.g. "NA18486.report.json"
+
+    Returns None if the filename doesn't match known patterns.
+    """
+    parts = filename.split(".")
+    # Strip the trailing ".report.json" (or just ".json")
+    # then look for a 1000 Genomes-style sample ID (starts with HG or NA)
+    for part in parts:
+        if part.startswith(("HG", "NA")) and len(part) >= 6:
+            return part
+    return None
+
+
 def _process_report_file(
     report_file: Path,
     african_ids: set[str],
     catalog_alleles: dict[str, list[str]],
     stats: dict[str, dict[str, dict]],
 ) -> None:
-    sample_id = report_file.name.split(".")[2]
-    if sample_id not in african_ids:
+    sample_id = _extract_sample_id(report_file.name)
+    if sample_id is None or sample_id not in african_ids:
         return
     with open(report_file) as f:
         data = json.load(f)
