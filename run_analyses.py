@@ -37,11 +37,15 @@ CONCORDANCE_OUTPUT = REPO_ROOT / "analyses" / "concordance_benchmark" / "results
 
 
 def run_step(name: str, cmd: list[str]) -> bool:
-    """Run a subprocess step, printing status. Returns True on success."""
+    """Run a subprocess step, printing status. Returns True on success.
+
+    All command arguments are constructed internally from resolved Path objects
+    and sys.executable — no external/user-controlled strings are interpolated.
+    """
     print(f"\n{'─' * 60}")
     print(f"  {name}")
     print(f"{'─' * 60}\n")
-    result = subprocess.run(cmd, cwd=str(REPO_ROOT))
+    result = subprocess.run(cmd, cwd=str(REPO_ROOT))  # noqa: S603
     if result.returncode != 0:
         print(f"\n  FAILED (exit {result.returncode})", file=sys.stderr)
         return False
@@ -130,19 +134,33 @@ def main() -> int:
     if args.skip_concordance or args.pharmcat_dir is None:
         print("\n  SKIP: concordance benchmark (no --pharmcat-dir provided)")
     else:
-        ok = run_step(
-            "PharmCAT Concordance Benchmark",
-            [
-                python, str(CONCORDANCE_SCRIPT),
-                "--pharmcat-dir", str(args.pharmcat_dir),
-                "--afripharmagen", str(BENCHMARK),
-                "--samples", str(SAMPLES),
-                "--catalog", str(CATALOG),
-                "--output-dir", str(CONCORDANCE_OUTPUT),
-            ],
-        )
-        if not ok:
+        # Preflight: verify directory exists and contains reports
+        if not args.pharmcat_dir.is_dir():
+            print(
+                f"ERROR: --pharmcat-dir is not a directory: {args.pharmcat_dir}",
+                file=sys.stderr,
+            )
             failed.append("concordance benchmark")
+        elif not list(args.pharmcat_dir.glob("*.report.json")):
+            print(
+                f"ERROR: no *.report.json files found in {args.pharmcat_dir}",
+                file=sys.stderr,
+            )
+            failed.append("concordance benchmark")
+        else:
+            ok = run_step(
+                "PharmCAT Concordance Benchmark",
+                [
+                    python, str(CONCORDANCE_SCRIPT),
+                    "--pharmcat-dir", str(args.pharmcat_dir),
+                    "--afripharmagen", str(BENCHMARK),
+                    "--samples", str(SAMPLES),
+                    "--catalog", str(CATALOG),
+                    "--output-dir", str(CONCORDANCE_OUTPUT),
+                ],
+            )
+            if not ok:
+                failed.append("concordance benchmark")
 
     # Summary
     print(f"\n{'═' * 60}")

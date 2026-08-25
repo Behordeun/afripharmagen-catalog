@@ -9,6 +9,7 @@ Usage:
 
 import argparse
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -28,6 +29,10 @@ REQUIRED_VARIANT_FIELDS = {"rsid", "position", "ref", "alt"}
 
 def validate_meta(meta: dict, errors: list[str], warnings: list[str]) -> None:
     """Check _meta block for required fields."""
+    if not isinstance(meta, dict):
+        errors.append("'_meta' must be a JSON object, got " + type(meta).__name__)
+        return
+
     for field in REQUIRED_META_FIELDS:
         if field not in meta:
             errors.append(f"_meta missing required field: {field}")
@@ -40,6 +45,10 @@ def validate_meta(meta: dict, errors: list[str], warnings: list[str]) -> None:
 
 def validate_entry(idx: int, entry: dict, errors: list[str], warnings: list[str]) -> None:
     """Validate a single catalog entry."""
+    if not isinstance(entry, dict):
+        errors.append(f"entries[{idx}]: must be a JSON object, got {type(entry).__name__}")
+        return
+
     prefix = f"entries[{idx}] ({entry.get('gene', '?')}/{entry.get('allele_name', '?')})"
 
     # Required fields
@@ -66,11 +75,16 @@ def validate_entry(idx: int, entry: dict, errors: list[str], warnings: list[str]
 
     # Activity score validation
     score = entry.get("activity_score")
-    if score is not None and score not in VALID_ACTIVITY_SCORES:
-        warnings.append(
-            f"{prefix}: activity_score {score} is non-standard "
-            f"(expected one of {sorted(VALID_ACTIVITY_SCORES)})"
-        )
+    if score is not None:
+        if isinstance(score, bool) or not isinstance(score, (int, float)):
+            errors.append(
+                f"{prefix}: activity_score must be a number, got {type(score).__name__}"
+            )
+        elif score not in VALID_ACTIVITY_SCORES:
+            warnings.append(
+                f"{prefix}: activity_score {score} is non-standard "
+                f"(expected one of {sorted(VALID_ACTIVITY_SCORES)})"
+            )
 
     # Activity score consistency with function
     if func == "no_function" and score != 0.0:
@@ -100,10 +114,15 @@ def validate_entry(idx: int, entry: dict, errors: list[str], warnings: list[str]
         else:
             try:
                 low, high = float(parts[0]), float(parts[1])
-                if low > high:
-                    errors.append(f"{prefix}: frequency_range low ({low}) > high ({high})")
-                if high > 1.0:
-                    errors.append(f"{prefix}: frequency_range high ({high}) exceeds 1.0")
+                if not math.isfinite(low) or not math.isfinite(high):
+                    errors.append(f"{prefix}: frequency_range contains non-finite value")
+                else:
+                    if low < 0.0:
+                        errors.append(f"{prefix}: frequency_range low ({low}) is negative")
+                    if high > 1.0:
+                        errors.append(f"{prefix}: frequency_range high ({high}) exceeds 1.0")
+                    if low > high:
+                        errors.append(f"{prefix}: frequency_range low ({low}) > high ({high})")
             except ValueError:
                 errors.append(f"{prefix}: frequency_range '{freq_range}' contains non-numeric values")
 
@@ -124,6 +143,10 @@ def validate_entry(idx: int, entry: dict, errors: list[str], warnings: list[str]
     seen_rsids = set()
     for vi, var in enumerate(variants):
         var_prefix = f"{prefix}.defining_variants[{vi}]"
+        if not isinstance(var, dict):
+            errors.append(f"{var_prefix}: must be a JSON object, got {type(var).__name__}")
+            continue
+
         for field in REQUIRED_VARIANT_FIELDS:
             if field not in var:
                 errors.append(f"{var_prefix}: missing '{field}'")
